@@ -1,93 +1,83 @@
+let chosenColor = 'black';
+
 function setup() {
-  createCanvas(500, 400);
+  createCanvas(1000, 800);
+  background(245);
+
 }
 
-function draw() {
-  background(220);
-  
-  //--------Example-4---------------------
-
-  //Blue backdrop
+function draw() { //Create pallette buttons
   noStroke();
-  fill(0,0,150);
-  rect(0,0,200,200); 
 
-  //White Circle
+  fill('red');
+  square(5,5,50);
+
+  fill('orange');
+  square(5,60,50);
+
+  fill('yellow');
+  square(5,115,50);
+
+  fill('lime');
+  square(5,170,50);
+
+  fill('cyan');
+  square(5,225,50);
+
+  fill('blue');
+  square(5,280,50);
+
+  fill('magenta');
+  square(5,335,50);
+
+  fill('brown');
+  square(5,390,50);
+
   fill(255);
-  ellipse(100,100,98,98);
-
-  //Green Circle
-  fill(21,128,0);
-  ellipse(100,100,90,90);
-
-  //White Star
-  fill(255);
-  triangle(100,50,130,140,90,110); //Right
-  triangle(50,90,100,115,150,90); //Center
-  triangle(100,50,70,140,110,110); //Left
-
-  //Red Star
-  fill(255,0,0);
-  triangle(100,60,122,130,100,112); //Right
-  triangle(60,92,100,112,140,92); //Center
-  triangle(100,60,78,130,100,112); //Left
-
-  //--------Example-3-------------------------
-
-  //Black backdrop
-  noStroke();
-  fill(0);
-  rect(0,250,200,100); 
-
-  //Pac-man
-  fill(255,255,0)
-  ellipse(50,300,80,80);
+  square(5,445,50);
 
   fill(0);
-  triangle(10,260,50,300,10,335);
+  square(5,500,50); 
 
-  //Ghost
-  fill(255,0,0);
-  rect(110,300,80,40);
-  ellipse(150,300,80,80);
+  strokeWeight(5);
 
-  fill(255);
-  ellipse(130,300,25,25);
-  ellipse(170,300,25,25);
+  if(mouseIsPressed) {
+    if(mouseX > 55 || mouseY > 555) { //Inside canvas
+      stroke(chosenColor);
+      line(pmouseX,pmouseY,mouseX,mouseY); //Paint lines
 
-  fill(0,0,255);
-  ellipse(130,300,15,15);
-  ellipse(170,300,15,15);
+    } else { //Inside pallette
+      if(mouseY > 500) { //BLACK
+        chosenColor = 'black';
 
-  //------Example-2------------------------------
+      } else if(mouseY > 445) { //WHITE
+        chosenColor = 'white';
 
-  //White backdrop
-  noStroke();
-  fill(255);
-  rect(250,0,200,200); 
-  
-  //Red circle
-  fill(255,0,0,100);
-  ellipse(350,70,90,90);
+      } else if(mouseY > 390) { //BROWN
+        chosenColor = 'brown';
 
-  //Green circle
-  fill(0,0,255,100);
-  ellipse(320,125,90,90);
+      } else if(mouseY > 335) { //MAGENTA
+        chosenColor = 'magenta';
 
-  //Blue circle
-  fill(0,255,0,100);
-  ellipse(380,125,90,90);
+      } else if(mouseY > 280) { //BLUE
+        chosenColor = 'blue';
 
-  //--------Example-1-------------------------------
+      } else if(mouseY > 225) { //CYAN
+        chosenColor = 'cyan';
 
-  //Green backdrop
-  noStroke();
-  fill(51,255,51);
-  rect(250,250,200,100); 
-  
-  //White circle and square
-  stroke(0)
-  fill(255);
-  ellipse(300,300,80,80);
-  square(360,260,80);
+      } else if(mouseY > 170) { //LIME
+        chosenColor = 'lime';
+
+      } else if(mouseY > 115) { //YELLOW
+        chosenColor = 'yellow';
+
+      } else if(mouseY > 60) { //ORANGE
+        chosenColor = 'orange';
+
+      } else { //RED
+        chosenColor = 'red';
+
+      }
+    }
+  }
 }
