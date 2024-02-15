@@ -7,7 +7,7 @@ function preload() { //Defining sprite images and creating characters
     walkRight: {row: 0, col: 1, frames: 8},
     walkUp: {row: 5, frames: 6},
     walkDown: {row: 5, col: 6, frames: 6},
-    dance: {row: 9, col: 7, frames: 4}
+    dance: {row: 9, col: 8, frames: 3}
   };
 
   characters.push(new Character(100,100,80,80,'assets/blue.png',animations));
