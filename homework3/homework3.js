@@ -23,13 +23,13 @@ function draw() { //Character movement
   background(0);
 
   characters.forEach((character) => {
-    if (kb.pressing('w')) {
+    if (kb.pressing('up')) {
       character.walkUp();
-    } else if (kb.pressing('s')) {
+    } else if (kb.pressing('down')) {
       character.walkDown();
-    } else if (kb.pressing('d')) {
+    } else if (kb.pressing('right')) {
       character.walkRight();
-    } else if (kb.pressing('a')) {
+    } else if (kb.pressing('left')) {
       character.walkLeft();
     } else if (kb.pressing('y')) {
       character.dance();
