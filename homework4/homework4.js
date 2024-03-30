@@ -1,6 +1,9 @@
 let sprite;
 let infestation = [];  //Bug array
 
+let timeLeft = 1800;  //Setting up timer
+let bugsSquished = 0; //Setting up squish counter
+
 function preload() {  //Laying the groundwork
   let animations = {  //Assigning sprites
     stand: {row: 0, frames: 1},
@@ -8,13 +11,13 @@ function preload() {  //Laying the groundwork
     squished: {row: 1, frames: 1}
   };
   
-  frameRate(60);  //Setting frame rate to 60 for accurate countdown
+  //frameRate(60);  //Setting frame rate to 60 for accurate countdown
 
   randomX = 0;  //Defining variables for random coordinates
   randomY = 0;  
 
-  timeLeft = 1800;  //Setting up timer
-  bugsSquished = 0; //Setting up squish counter
+  //timeLeft = 1800;  //Setting up timer
+  //bugsSquished = 0; //Setting up squish counter
 
   for (let i = 0; i < 30; i++) { //Spawning in da bugz
     randomX = Math.random() * 800;  //Random coordinates between 0 and 800
@@ -40,8 +43,10 @@ function mouseClicked() { //Runs each time mouse is clicked
 }
 
 
-function setup() { //Backdrop
+function setup() { //Backdrop and frame rate
   createCanvas(800, 800);
+
+  frameRate(60);
 }
 
 function draw() { //Loop running at 60fps

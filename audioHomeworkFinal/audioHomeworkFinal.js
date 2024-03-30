@@ -1,15 +1,25 @@
-let sprite;
-let infestation = [];  //Bug array
+var sprite;
+var infestation = [];  //Bug array
 
-let bugCel;
-let madBug;
-let soyBug;
+var bugCel;
+var madBug;
+var soyBug;
 
-let animations = {  //Assigning sprites
+var animations = {  //Assigning sprites
   stand: {row: 0, frames: 1},
   skitter: {row: 0, col: 1, frames: 8},
   squished: {row: 1, frames: 1}
 };
+
+var gameState = 0; //0 for main menu, 1 for game proper, 2 for game over
+var bugSpawned = false; //Whether or not there are bugs on the field
+
+var randomX = 0;  //Defining variables for random coordinates
+var randomY = 0;  
+
+var timeLeft = 1800;  //Setting up timer
+var bugsSquished = 0; //Setting up squish counter
+var totalBugSquish = false; //Victory variable
 
 function preload() {  //Laying the groundwork
   
@@ -19,7 +29,9 @@ function preload() {  //Laying the groundwork
     //squished: {row: 1, frames: 1}
   //};
   
-  frameRate(60);  //Setting frame rate to 60 for accurate countdown
+  //frameRate(60);  //Setting frame rate to 60 for accurate countdown
+
+  /*/
 
   gameState = 0; //0 for main menu, 1 for game proper, 2 for game over
   bugSpawned = false; //Whether or not there are bugs on the field
@@ -33,14 +45,12 @@ function preload() {  //Laying the groundwork
 
   /*/
 
-  for (let i = 0; i < 30; i++) { //Spawning in da bugz
-    randomX = Math.random() * 800;  //Random coordinates between 0 and 800
-    randomY = Math.random() * 800;
-    infestation.push(new Bug(randomX,randomY,64,64,'assets/bugBig.png',animations,false,1));
-  }
+  //for (let i = 0; i < 30; i++) { //Spawning in da bugz
+    //randomX = Math.random() * 800;  //Random coordinates between 0 and 800
+    //randomY = Math.random() * 800;
+    //infestation.push(new Bug(randomX,randomY,64,64,'assets/bugBig.png',animations,false,1));
+  //}
 
-  /*/
-  
   bugCel = loadImage('assets/bugCel.png');
   madBug = loadImage('assets/madBug.png');
   soyBug = loadImage('assets/soyBug.png');
@@ -76,8 +86,10 @@ function keyPressed() { //Press any key to continue type beat
   }
 }
 
-function setup() { //Backdrop
+function setup() { //Backdrop and frame rate
   createCanvas(800, 800);
+
+  frameRate(60);
 }
 
 function draw() { //Loop running at 60fps
@@ -94,7 +106,7 @@ function draw() { //Loop running at 60fps
     fill(179,0,0);
     text("SQUISH",350,100);
 
-    textSize(50)
+    textSize(50);
     fill(0);
     text("Press any key to start",200,200);
 
@@ -127,8 +139,8 @@ function draw() { //Loop running at 60fps
     infestation.forEach((bug) => {  //Routine for living bug movement
       if (bug.squished == false) {  //Checks that bug is alive
       
-        lazyRoll = (100*(Math.random())); //Roll for wanting to change direction
-        moveRoll = (100*(Math.random())); //Roll for which direction to change to
+        let lazyRoll = (100*(Math.random())); //Roll for wanting to change direction
+        let moveRoll = (100*(Math.random())); //Roll for which direction to change to
 
         if(lazyRoll <= 1) { //1% chance every frame to change directions
           if (moveRoll <= 25) { //25% chance to change to any direction, including current
