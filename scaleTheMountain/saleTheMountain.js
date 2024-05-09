@@ -237,7 +237,7 @@ function draw() {
         }
         
         movementJoy();
-        //movement();
+        movement();
 
         if((nickScale.y >= 1100) || (nickHealth == 0)) {
             gameState = 3;
@@ -274,14 +274,17 @@ function draw() {
         nickHealth = 3;
 
         //Logic for input starting game
-        /*/
+        
         if(kb.presses('q')) {
             gameState = 1;
             rockSlide.respawn(100);
             nickScale.x = 10;
             nickScale.y = 880;
+
+            soundtrack.player("titleMusic").stop();
+            soundtrack.player("gameMusic").start();
+            soundtrack.player("gameMusic").volume.value = -10;
         }
-        /*/
 
         if(sensorData.sw == 1) {    //Start game
             gameState = 1;
